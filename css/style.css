@@ -1,0 +1,9 @@
+.alert-danger{
+	display: none;
+}
+
+.fondo{
+	background-image: linear-gradient(#C2BEFA, #5E52F3);
+}
+
+.hidetext { -webkit-text-security: disc; /* Default */ }
