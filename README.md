@@ -44,12 +44,11 @@ El proyecto consiste en la realización de una aplicación la cual permita guard
 1. Sistema de login de usuarios.
    - El administrador (admin) tendrá posibilidad de hacer CRUD a todos los usuarios registrados con todos sus sitios.
    - El usuario (user) sólo verá sus propios sitios. 
-2. Envío de email.
-3. Envío de SMS.
-4. Verificación en el envío de mail o SMS.
-5. Encriptación de las contraseñas almacenadas
+2. Contraseña generada al registrarse.
+3. Envío de email con contraseña generada.
+4. Encriptación de las contraseñas almacenadas.
 
-Cuando un usuario se registra, se le generará usa contraseña aleatoria la cual a decisión del usuario se le enviará dicha contraseña mediante email o SMS (Ambas opciones con verificación). Dichas contraseñas se almacenarán encriptadas en la base de datos.
+Cuando un usuario se registra, se le generará usa contraseña aleatoria la cual se le enviará dicha contraseña mediante email. Dicha contraseña se almacenará encriptada en la base de datos.
 
 Una vez dentro el usuario podrá añadir los sitios en los cuales se registra (Nombre del sitio, usuario con el que se registró, contraseña del sitio y url del sitio).
 
@@ -113,10 +112,9 @@ En estos casos, la construcción de un prototipo de parte del sistema y la reali
 - **Pruebas:** Una vez tengamos una versión del proyecto se realizan una serie de 	pruebas a realizar para su correcto funcionamiento.
 ## Planificación y estimación temporal<a name="id5"></a>
 ### Planificación temporal
-![Horas invertidas y coste](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/planiicacion.png)
+![Horas invertidas y coste](https://rawcdn.githack.com/sergjime/images-pfc/5596983e9ccc3b63d73ccbf462097139e8c8576c/proyecto/horasCoste.PNG)
 ### Diagrama de gantt
-![Diagrama de gantt 1](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/gantt1.png)
-![Diagrama de gantt 2](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/gantt2.png)
+![Diagrama de gantt](https://rawcdn.githack.com/sergjime/images-pfc/5596983e9ccc3b63d73ccbf462097139e8c8576c/proyecto/GanttDefinitivo.pdf)
 ## Materiales necesarios<a name="id6"></a>
 ### HARDWARE
 #### Materiales necesarios para el desarrollo
