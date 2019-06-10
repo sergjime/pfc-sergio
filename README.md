@@ -81,7 +81,9 @@ Es fácil desplegar un proyecto en PHP porque dispones de paquetes totalmente au
     - Asegura la integridad de los datos
     
 ![Modelo de capas](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/capas.png)
-## Estructra de la aplicación
+## Diagrama de la aplicación
+![Diagrama](https://rawcdn.githack.com/sergjime/images-pfc/9a5ff422c3d0a8a16956cf8d0135e747dd271274/proyecto/diagramaPFC.png)
+## Estructura de la aplicación
 - **config:** Aquí irán los ficheros de configuración de la base de datos, globales, constantes, etc.
 - **css:** Aquí va el estilo de la aplicación.
 - **images:** Aquí iran todos esos archivos los cuales son imágenes de la aplicación (también contiene un directorio con los avatares de los usuarios).
