@@ -114,7 +114,8 @@ En estos casos, la construcción de un prototipo de parte del sistema y la reali
 ### Planificación temporal
 ![Horas invertidas y coste](https://rawcdn.githack.com/sergjime/images-pfc/5596983e9ccc3b63d73ccbf462097139e8c8576c/proyecto/horasCoste.PNG)
 ### Diagrama de gantt
-![Diagrama de gantt](https://rawcdn.githack.com/sergjime/images-pfc/5596983e9ccc3b63d73ccbf462097139e8c8576c/proyecto/GanttDefinitivo.pdf)
+![]()
+[Enlace al diagrama de gantt](https://rawcdn.githack.com/sergjime/images-pfc/5596983e9ccc3b63d73ccbf462097139e8c8576c/proyecto/GanttDefinitivo.pdf)
 ## Materiales necesarios<a name="id6"></a>
 ### HARDWARE
 #### Materiales necesarios para el desarrollo
