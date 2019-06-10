@@ -43,7 +43,7 @@
         } else {
             $pagina = $_GET['pagina'];
         }
-        
+
         $empezar_desde = ($pagina - 1) * $sizeRegisters;
         $sql_total = "SELECT * FROM usuarios";
         $resultado = $pdo->prepare($sql_total);
@@ -55,7 +55,7 @@
         $sql_limit = "SELECT * FROM sitios WHERE id_usuario='$id_usuario' LIMIT $empezar_desde, $sizeRegisters";
         $result = $pdo->prepare($sql_limit);
         $result->execute(array());
-        
+
         ?>
         <div class="container">
             <h1 class="mt-3 mb-3">Tus Sitios</h1>
@@ -67,20 +67,45 @@
                         <th>Usuario en el sitio</th>
                         <th>Contraseña en el sitio</th>
                         <th>Url del sitio</th>
+                        <th>Eliminar sitio</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($registro = $result->fetch(PDO::FETCH_ASSOC)) { ?>
                     <tr>
-                        <td><?php echo $registro['nombre_sitio'] ?></td>
-                        <td><?php echo $registro['user'] ?></td>
-                        <td class="hidetext"><?php echo $registro['password'] ?></td>
-                        <td><?php echo $registro['url'] ?></td>
+                        <td>
+                            <input type="text" value="<?php echo $registro['nombre_sitio'] ?>" id="nombre_sitio">
+                            <button onmousedown="myFunction(nombre_sitio)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
+                        </td>
+                        <td>
+                            <input type="text" value="<?php echo $registro['user'] ?>" id="usuario">
+                            <button onmousedown="myFunction(usuario)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
+                        </td>
+                        <td>
+                            <input type="password" value="<?php echo $registro['password'] ?>" id="contra">
+                            <button onmousedown="myFunction(contra)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
+                        </td>
+                        <td>
+                            <input type="text" value="<?php echo $registro['url'] ?>" id="url">
+                            <button onmousedown="myFunction(url)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
+                        </td>
+                        <td> 
+                            <div>
+                                <a href="borrar.php?id=<?php echo $id_usuario ?>" class="btn btn-danger btn-sm">Eliminar&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>
-                
             </table>
         </div>
+        <script>
+            function myFunction(id) {
+                // Copiar contenido
+                var copyText = document.getElementById(id.id);
+                copyText.select();
+                document.execCommand("copy");
+            }
+        </script>
     </body>
 </html>
