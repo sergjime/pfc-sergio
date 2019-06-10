@@ -6,6 +6,7 @@
         <title>Sistema de Gesti&oacute;n y Administraci&oacute;n de
             contrase&ntilde;as online</title>
         <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" type="image/vnd.microsoft.icon" href="../../../images/logo.ico">
         <link rel="stylesheet"
               href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
               integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -30,52 +31,72 @@
     </head>
     <body>
         <?php
-        session_start();
-        $id_usuario = $_SESSION['id_usuario'];
-        $usu = $_SESSION['usuario'];
-        $pass = $_SESSION['password'];
+        session_start(); ?>
+        <nav class="navbar fondo">
+            <a class="navbar-brand" href="index.php">
+                <img src="../../../images/logo.png" class="img-fluid" alt="logo" /></a>
+            <div class="S mb-3">
+                <h3 class="mr-5">
+                    Bienvenid@ <strong><?php echo $_SESSION['usuario'] ?></strong>
+                </h3>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 100px;">
+                    <img src="../../../images/avatars/<?php echo $_SESSION['usuario'] . '_' . $_SESSION['avatar'] ?>" alt="Avatar" width="50" height="50">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button" onclick="window.location.href='../../../cambiar.php'">Cambiar contraseña&nbsp;&nbsp;<i class="fa fa-lock"></i></button>
+                    <button class="dropdown-item" type="button" onclick="window.location.href='../cerrar.php'">Cerrar sesión&nbsp;&nbsp;<i class="fas fa-power-off"></i></button>
+                </div>
+            </div>
+        </nav>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../../../images/block.jpg" class="d-block w-100" alt="Key-site" style="height: 250px;opacity: 0.8;">
+                </div>
+            </div>
+        </div>
+        <?php require '../../config/conexion.php';
+                    $sizeRegisters = 3; // Cuantos registros se mostrarán por página
 
-        if (! isset($usu)) {
-            header("location:../../index.php");
-        }
+                    if (! isset($_GET['pagina'])) {
+                        $pagina = 1;
+                    } else {
+                        $pagina = $_GET['pagina'];
+                    }
 
-        include_once 'navbar.php';
-        require '../../config/conexion.php';
-        $sizeRegisters = 3; // Cuantos registros se mostrarán por página
-
-        if (! isset($_GET['pagina'])) {
-            $pagina = 1;
-        } else {
-            $pagina = $_GET['pagina'];
-        }
-
-        $empezar_desde = ($pagina - 1) * $sizeRegisters;
-        $sql_total = "SELECT * FROM usuarios";
-        $resultado = $pdo->prepare($sql_total);
-        $resultado->execute(array());
-        $num_filas = $resultado->rowCount();
-        $totalPages = ceil($num_filas / $sizeRegisters);
-        $resultado->closeCursor();
-        /* CONSULTA CON EL LIMIT */
-        $sql_limit = "SELECT * FROM usuarios LIMIT $empezar_desde, $sizeRegisters";
-        $result = $pdo->prepare($sql_limit);
-        $result->execute(array());
+                    $empezar_desde = ($pagina - 1) * $sizeRegisters;
+                    $sql_total = "SELECT * FROM usuarios";
+                    $resultado = $pdo->prepare($sql_total);
+                    $resultado->execute(array());
+                    $num_filas = $resultado->rowCount();
+                    $totalPages = ceil($num_filas / $sizeRegisters);
+                    $resultado->closeCursor();
+                    /* CONSULTA CON EL LIMIT */
+                    $sql_limit = "SELECT * FROM usuarios LIMIT $empezar_desde, $sizeRegisters";
+                    $result = $pdo->prepare($sql_limit);
+                    $result->execute(array());
         ?>
 
 
         <div class="container-fluid ml-5 mr-5">
             <div class="row">
                 <div><h1 class="mt-3 mb-3">Usuarios</h1></div>
-                <div>&nbsp;&nbsp;<span class="badge badge-secondary">En total hay <?php echo $num_filas ?> usuarios</span></div>
+                <?php if ($num_filas == 1){ ?>
+                <div>&nbsp;&nbsp;<span class="mt-4 mb-3 badge badge-secondary">En total sólo hay <?php echo $num_filas ?> usuario</span></div>
+                <?php }else{ ?>
+                <div>&nbsp;&nbsp;<span class="mt-4 mb-3 badge badge-secondary">En total hay <?php echo $num_filas ?> usuarios</span></div>
+                <?php } ?>
             </div>
             <div class="row">
                 <?php foreach ($matrizUsuarios as $usuario) { ?>
-                <div class="card-deck w-25">
+                <div class="card-deck w-15">
                     <div class="card p-1 text-center">
                         <div class="card-header">
                             <h3><?php echo $usuario["nick"] ?></h3>
                         </div>
-                        <img class="img-fluid" src="descarga.jpg" alt="">
+                        <center><img class="img-fluid" src="../../images/avatars/<?php echo $usuario["nick"] . '_' . $usuario["avatar"] ?>" alt="avatar" width="200" height="200"></center>
                         <div class="card-body">
                             <h3 class="card-title"><?php echo $usuario["nombre"] ?></h3>
                             <p class="card-text"><?php echo $usuario["email"] ?></p>
@@ -86,7 +107,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            Lleva desde el <?php echo $usuario["fecha_alta"] ?> registrado.
+                            Lleva desde el <?php echo date("d/m/Y", strtotime($usuario["fecha_alta"])) ?> registrado.
                         </div>
                     </div>              
                 </div>  

@@ -1,42 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Key-site</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <?php include 'config/conexion.php' ?>
-        <link rel="icon" type="image/vnd.microsoft.icon" href="<?php echo ICON ?>">
-        <link rel="stylesheet" href="<?php echo CSS ?>" />
-        <script type="text/javascript" src="js/alertas.js"></script>
-        <?php echo CDN_FONTAWESOME ?>
-        <?php echo CDN_BOOTSTRAP ?>
-        <?php echo CDN_SWEETALERT ?>
+        <meta charset="UTF-8">
+        <title>Inicio se sesión</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <link rel="icon" type="image/vnd.microsoft.icon" href="images/logo.ico">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+        </script>
     </head>
     <body>
-        <?php if (isset($_GET['registro'])) { ?>
-        <?php if ($_GET['registro'] == 'si'){ ?>
+        <?php 
+        if (isset($_GET['rol'])) {
+            $rol = $_GET['rol'];
+        } else{
+            $_GET['registro'] = '';
+        } 
+        ?>
         <script>
             Swal.fire({
                 position: 'top',
                 type: 'success',
-                title: 'Usuario registrado',
-                showConfirmButton: true,
-                text: 'Hemos enviado tu contraseña para iniciar sesión a tu email.'
+                title: 'Bienvenido, acabas de iniciar sesión',
+                showConfirmButton: true
+            }).then((result) => {
+                if (result.value) {
+                    window.location="zona_privada/<?php echo $rol ?>";
+                }
             })
         </script>
-        <?php } elseif ($_GET['registro'] == 'no') { ?>
-        <script>
-            Swal.fire({
-                position: 'top',
-                type: 'error',
-                title: 'Error',
-                showConfirmButton: true,
-                text: 'Hemos tenido un error al enviar la contraseña a tu email.'
-            })
-        </script>
-        <?php } ?>
-        <?php } else{
-    $_GET['registro'] = '';
-} ?>
         <?php include 'navbar.php' ?>
         <?php include 'carrousel.php' ?>       
         <section class="m-2 pt-3 pl-5 pr-5 pb-3">

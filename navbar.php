@@ -5,6 +5,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="icon" type="image/vnd.microsoft.icon" href="images/logo.ico">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -83,8 +84,13 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>     
-								<form method="post" action="Conexiones.php">
+								<form method="post" action="Conexiones.php" enctype="multipart/form-data">
 									<div class="modal-body">
+										<div class="form-group">
+											<label for="exampleInputUser">Avatar:</label> <input
+												type="file" name="avatar" id="avatar" class="form-control">
+												<small>La imagen no debe exceder de 1MB</small>
+										</div>
 										<div class="form-group">
 											<label for="exampleInputUser">Nombre:</label> <input
 												type="text" name="nombre" id="nombre" class="form-control">
