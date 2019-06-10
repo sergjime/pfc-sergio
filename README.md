@@ -81,14 +81,14 @@ Es fácil desplegar un proyecto en PHP porque dispones de paquetes totalmente au
     - Asegura la integridad de los datos
     
 ![Modelo de capas](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/capas.png)
-## Estructra MVC
-- **config:** Aquí irán los ficheros de configuración de la base de datos, globales, etc.
-- **controller:** Como sabemos en la arquitectura MVC los controladores se encargarán de recibir y filtrar datos que le llegan de las vistas, llamar a los modelos y pasar los datos de estos a las vistas. Pues en este directorio colocaremos los controladores.
-- **model:** Aquí iran todos esos archivos los cuales conecten con la base de datos ya sea para recuperar datos, actualizarlos, eliminarlos, ...
-- **view:** Aquí iran las vistas, es decir, donde se imprimirán los datos y lo que verá el usuario.
-- **index.php:** Será el controlador frontal por el que pasará absolutamente todo en la aplicación.
+## Estructra de la aplicación
+- **config:** Aquí irán los ficheros de configuración de la base de datos, globales, constantes, etc.
+- **css:** Aquí va el estilo de la aplicación.
+- **images:** Aquí iran todos esos archivos los cuales son imágenes de la aplicación (también contiene un directorio con los avatares de los usuarios).
+- **zona_privada:** Aquí está aquella zona en la cual sólo los usuarios logeados pueden acceder.
+- **index.php:** Esta es la página principal de la aplicación.
 
-![Estructura MVC](https://rawcdn.githack.com/sergjime/images-pfc/295c23d12434cf2173144ac62d5f09fc1b02f644/estructura-mvc.png)
+![Estructura](https://rawcdn.githack.com/sergjime/images-pfc/9a5ff422c3d0a8a16956cf8d0135e747dd271274/proyecto/estructura.png)
 ## Proceso de desarrollo<a name="id4"></a>
 ### Metodología
 La metodología a seguir sera la de Modelo de prototipo (perteneciente a los modelos de desarrollo evolutivo).
