@@ -143,7 +143,7 @@ En estos casos, la construcción de un prototipo de parte del sistema y la reali
     MariaDB es un sistema de gestión de bases de datos derivado de MySQL.
            - phpMyAdmin: Herramienta para la administración de MySQL.
            
-![Materiales](https://rawcdn.githack.com/sergjime/images-pfc/15ba55cbbe2042099482b4d30803043d35a4d0a1/materiales.PNG)
+![Materiales](https://rawcdn.githack.com/sergjime/pfc-sergio/569adccc035a9985b8f296567e713aab8c64698c/documentación/tools.PNG)
 ## Despliegue<a name="id7"></a>
 Para el despliegue he elegido subir dicha aplicación en un hosting (000webhost) y utilizar un cliente FTP (en mi caso filezilla client) para subir los ficheros a la misma (la estructura de la aplicación).
 
