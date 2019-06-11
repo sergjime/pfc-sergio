@@ -37,7 +37,10 @@
                 <img src="../../../images/logo.png" class="img-fluid" alt="logo" /></a>
             <div class="S mb-3">
                 <h3 class="mr-5">
-                    Bienvenid@ <strong><?php echo $_SESSION['usuario'] ?></strong>
+                    Bienvenid@ <strong><?php echo $_SESSION['usuario']; 
+                    if (strcmp($_SESSION['rol'], 'admin') !== 0){
+                        header("Location:../../index.php");
+                    }?></strong>
                 </h3>
             </div>
             <div class="dropdown">
