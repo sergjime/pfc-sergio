@@ -57,10 +57,10 @@
         $result->execute(array());
 
         ?>
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="mt-3 mb-3">Tus Sitios</h1>
             <button type="submit" class="btn btn-success btnSubmit" onclick="window.location.href='nuevoSitio.php'">Añadir un nuevo sitio</button>
-            <table class="table table-striped table-bordered text-center mt-3">
+            <table class="table table-striped table-bordered text-center mt-3 w-60">
                 <thead class="fondo">
                     <tr>
                         <th>Nombre del sitio</th>
@@ -72,40 +72,92 @@
                 </thead>
                 <tbody>
                     <?php while ($registro = $result->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <tr>
-                        <td>
-                            <input type="text" value="<?php echo $registro['nombre_sitio'] ?>" id="nombre_sitio">
-                            <button onmousedown="myFunction(nombre_sitio)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
-                        </td>
-                        <td>
-                            <input type="text" value="<?php echo $registro['user'] ?>" id="usuario">
-                            <button onmousedown="myFunction(usuario)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
-                        </td>
-                        <td>
-                            <input type="password" value="<?php echo $registro['password'] ?>" id="contra">
-                            <button onmousedown="myFunction(contra)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
-                        </td>
-                        <td>
-                            <input type="text" value="<?php echo $registro['url'] ?>" id="url">
-                            <button onmousedown="myFunction(url)">Copiar&nbsp;&nbsp;<i class="fas fa-copy"></i></button>
-                        </td>
-                        <td> 
-                            <div>
-                                <a href="borrar.php?id=<?php echo $id_usuario ?>" class="btn btn-danger btn-sm">Eliminar&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-        <script>
-            function myFunction(id) {
-                // Copiar contenido
-                var copyText = document.getElementById(id.id);
-                copyText.select();
-                document.execCommand("copy");
+                </div>
+            <tr>
+                <td>
+                    <?php echo $registro['nombre_sitio'] ?>
+                    <button type="button" class="btn btn-default btn-copy js-tooltip js-copy" data-toggle="tooltip" data-placement="bottom" data-copy="<?php echo $registro['nombre_sitio'] ?>" title="Copiar">
+                        <!-- icon from google's material design library -->
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </td>
+                <td>
+                    <?php echo $registro['user'] ?>
+                    <button type="button" class="btn btn-default btn-copy js-tooltip js-copy" data-toggle="tooltip" data-placement="bottom" data-copy="<?php echo $registro['user'] ?>" title="Copiar">
+                        <!-- icon from google's material design library -->
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </td>
+                <td>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-default btn-copy js-tooltip js-copy" data-toggle="tooltip" data-placement="bottom" data-copy="<?php echo $registro['password'] ?>" title="Copiar">
+                                <!-- icon from google's material design library -->
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                            </button>
+                        </div>
+                        <input type="password" class="form-control" value="<?php echo $registro['password'] ?>" size="4" disabled>
+                    </div>
+                </td>
+                <td>
+                    <?php echo $registro['url'] ?>
+                    <button type="button" class="btn btn-default btn-copy js-tooltip js-copy" data-toggle="tooltip" data-placement="bottom" data-copy="<?php echo $registro['url'] ?>" title="Copiar">
+                        <!-- icon from google's material design library -->
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+                    </button>
+                </td>
+                <td> 
+                    <div>
+                        <a href="borrar.php?id=<?php echo $id_usuario ?>" class="btn btn-danger btn-sm">Eliminar&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+<script>
+    function copyToClipboard(text, el) {
+        var copyTest = document.queryCommandSupported('copy');
+        var elOriginalText = el.attr('data-original-title');
+
+        if (copyTest === true) {
+            var copyTextArea = document.createElement("textarea");
+            copyTextArea.value = text;
+            document.body.appendChild(copyTextArea);
+            copyTextArea.select();
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'Texto copiado!' : 'Ups, no lo copió!';
+                el.attr('data-original-title', msg).tooltip('show');
+            } catch (err) {
+                console.log('Oops, unable to copy');
             }
-        </script>
-    </body>
+            document.body.removeChild(copyTextArea);
+            el.attr('data-original-title', elOriginalText);
+        } else {
+            // Fallback if browser doesn't support .execCommand('copy')
+            window.prompt("Copy to clipboard: Ctrl+C or Command+C, Enter", text);
+        }
+    }
+
+    $(document).ready(function() {
+        // Initialize
+        // ---------------------------------------------------------------------
+
+        // Tooltips
+        // Requires Bootstrap 3 for functionality
+        $('.js-tooltip').tooltip();
+
+        // Copy to clipboard
+        // Grab any text in the attribute 'data-copy' and pass it to the 
+        // copy function
+        $('.js-copy').click(function() {
+            var text = $(this).attr('data-copy');
+            var el = $(this);
+            copyToClipboard(text, el);
+        });
+    });
+</script>
+</body>
 </html>

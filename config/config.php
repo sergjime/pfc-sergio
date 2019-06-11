@@ -1,9 +1,9 @@
 <?php
 //////////////// BASE DE DATOS ////////////////
-define('HOST','localhost');
-define('USER','root');
-define('PASS','');
-define('DBNAME','pfc_dual');
+    define('HOST','localhost');
+    define('USER','u963748284_zylu');
+    define('PASS','Admingenius$$09');
+    define('DBNAME','u963748284_zylu');
 
 //////////////// CDN ////////////////
 define('CDN_FONTAWESOME', '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">');

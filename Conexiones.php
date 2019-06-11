@@ -9,6 +9,13 @@ class Conexiones {
             $stmt = $pdo->prepare("INSERT INTO usuarios(nombre, avatar, nick, password_login, apellido1, apellido2, rol_usuario, fecha_alta, email) 
             VALUES(:nom, :avatar, :nick, :pass, :ape1, :ape2, :rol, NOW(), :email)");
 
+            if ($avatar['tamano'] <= 1000000){
+                $tipo = substr($avatar['tipo'], 0, 5);
+                if ($tipo == 'image'){
+                    $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . '/images/avatars/';
+                    move_uploaded_file($avatar['tmp'], $carpeta_destino . $usuario . '_'. $avatar['nombre']);
+                }
+            }
             $stmt->bindValue(':nom', $nombre, PDO::PARAM_STR);
             $stmt->bindValue(':avatar', $avatar['nombre'], PDO::PARAM_STR);
             $stmt->bindValue(':nick', $usuario, PDO::PARAM_STR);
@@ -20,13 +27,7 @@ class Conexiones {
 
             $stmt->execute();
 
-            if ($avatar['tamano'] <= 1000000){
-                $tipo = substr($avatar['tipo'], 0, 5);
-                if ($tipo == 'image'){
-                    $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . '/images/avatars/';
-                    move_uploaded_file($avatar['tmp'], $carpeta_destino . $usuario . '_'. $avatar['nombre']);
-                }
-            }
+
 
         } catch (Exception $e) {
             echo "Línea del error: " . $e->getLine() . "<br/>";
@@ -126,12 +127,22 @@ if ($_POST['oculto'] == 'registro'){
     $apellido1 = $_POST["apellido1"];
     $apellido2 = $_POST["apellido2"];
     $email = $_POST["mail"];
-    $avatar = array(
-        "nombre" => $_FILES["avatar"]['name'],
-        "tipo" => $_FILES["avatar"]['type'],
-        "tamano"   => $_FILES["avatar"]['size'],
-        "tmp"  => $_FILES["avatar"]['tmp_name'],
-    );
+    if ($_FILES["avatar"]['name'] == ''){
+        $avatar = 'predeterminado.png';
+        $avatar = array(
+            "nombre" => 'predeterminado.png',
+            "tipo" => $_FILES["avatar"]['type'],
+            "tamano"   => $_FILES["avatar"]['size'],
+            "tmp"  => $_FILES["avatar"]['tmp_name'],
+        );
+    }else{
+        $avatar = array(
+            "nombre" => $_FILES["avatar"]['name'],
+            "tipo" => $_FILES["avatar"]['type'],
+            "tamano"   => $_FILES["avatar"]['size'],
+            "tmp"  => $_FILES["avatar"]['tmp_name'],
+        );
+    }
     $pass = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@_"), 0, 10);
     $clase->registrarUsuarios($nombre, $avatar, $usuario, $apellido1, $apellido2, $email, $pass); // Llama a la función registrarUsuarios()
     $clase->envioCorreo($usuario, $email, $pass);

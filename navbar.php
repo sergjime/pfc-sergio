@@ -88,21 +88,21 @@
 									<div class="modal-body">
 										<div class="form-group">
 											<label for="exampleInputUser">Avatar:</label> <input
-												type="file" name="avatar" id="avatar" class="form-control">
+												type="file" name="avatar" id="avatar" class="form-control" required>
 												<small>La imagen no debe exceder de 1MB</small>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputUser">Nombre:</label> <input
-												type="text" name="nombre" id="nombre" class="form-control">
+												type="text" name="nombre" id="nombre" class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputUser">Usuario:</label> <input
-												type="text" name="usu" id="usu" class="form-control">
+												type="text" name="usu" id="usu" class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputUser">Primer apellido:</label> <input
 												type="text" name="apellido1" id="apellido1"
-												class="form-control">
+												class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputUser">Segundo apellido:</label> <input
@@ -116,7 +116,7 @@
 										<div class="form-group">
 											<label for="exampleInputUser">Correo electr&oacute;nico</label>
 											<input type="email" name="mail" id="mail"
-												class="form-control">
+												class="form-control" required>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -155,10 +155,6 @@
 										<div class="form-group">
 											<label>Contrase&ntilde;a:</label> <input type="password"
 												name="contrasenya" class="form-control" value="" required />
-										</div>
-										<div class="form-group">
-											<a href="forgot.php" class="ForgetPwd">Olvid&oacute; la
-												contrase&ntilde;a</a>
 										</div>
 										<input type="hidden" name="oculto" value="inicio">
 									</div>
